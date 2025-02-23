@@ -1,6 +1,10 @@
 <script lang="ts">
+	import AppConfiguration from '$components/AppConfiguration.svelte';
 	import '../app.css';
+
 	let { children } = $props();
 </script>
 
-{@render children()}
+<AppConfiguration>
+	{@render children()}
+</AppConfiguration>

@@ -3,8 +3,7 @@
 	import Overlay from './Overlay.svelte';
 	import { Icon } from 'svelte-icons-pack';
 
-	export let width: string = '60vw';
-	export let title = 'Title';
+	let { children, width = '60vw', title = 'Title' } = $props();
 </script>
 
 <Overlay>
@@ -18,7 +17,7 @@
 			</button>
 		</div>
 		<div class="content">
-			<slot />
+			{@render children()}
 		</div>
 	</div>
 </Overlay>
