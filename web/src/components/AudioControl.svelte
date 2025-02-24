@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { userConfiguration } from '$store/userConfiguration.svelte';
+	import { userConfiguration } from '$/store/userConfiguration.svelte';
 	import {
 		RiMediaPauseFill,
 		RiMediaPlayFill,

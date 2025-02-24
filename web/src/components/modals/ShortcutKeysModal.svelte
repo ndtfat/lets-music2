@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Modal from '$components/common/Modal.svelte';
+	import Modal from '$/components/common/Modal.svelte';
 
 	const shortcutKeys = [
 		{
@@ -25,7 +25,7 @@
 	];
 </script>
 
-<Modal title="Shortcut Keys" width="600px">
+<Modal title="Shortcut Keys" width="600px" onclose={() => {}}>
 	<div class="flex flex-col gap-4">
 		{#each shortcutKeys as { label, shortcuts }, i}
 			<div>

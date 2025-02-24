@@ -9,8 +9,7 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		alias: {
-			'$components/*': 'src/components/*',
-			'$store/*': 'src/store/*',
+			'$/*': 'src/*',
 		}
 	}
 };

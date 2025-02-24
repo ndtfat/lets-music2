@@ -1,5 +1,5 @@
 <script>
-	import { userConfiguration } from '$store/userConfiguration.svelte';
+	import { userConfiguration } from '$/store/userConfiguration.svelte';
 	let { children } = $props();
 </script>
 
@@ -13,6 +13,9 @@
 	<track kind="captions" src="captions.vtt" srclang="en" label="English" />
 </video>
 
-<div class="fixed z-[123] h-screen w-screen" style="--primary: {userConfiguration.value.color}">
+<div
+	class="fixed h-screen w-screen"
+	style="--primary: {userConfiguration.value.color}; z-index: var(--app-content-z);"
+>
 	{@render children()}
 </div>

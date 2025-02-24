@@ -1,4 +1,8 @@
-<div class="overlay">
+<script>
+	export let zIndex = 987654321;
+</script>
+
+<div class="overlay" style="z-index: {zIndex};">
 	<slot />
 </div>
 
@@ -15,5 +19,6 @@
 		justify-content: center;
 		background: rgba(0, 0, 0, 0.6);
 		backdrop-filter: blur(5px);
+		animation: overlayAppear ease-in 0.2s forwards;
 	}
 </style>

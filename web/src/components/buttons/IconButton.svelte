@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Tooltip from '$components/common/Tooltip.svelte';
+	import Tooltip from '$/components/common/Tooltip.svelte';
 	import { Icon, type IconType } from 'svelte-icons-pack';
 	import WaveButton from './WaveButton.svelte';
 	import Button from './Button.svelte';

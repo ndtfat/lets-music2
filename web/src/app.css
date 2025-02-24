@@ -1,8 +1,16 @@
 @import 'tailwindcss';
 
+:root {
+    --modal-z: 987654321;
+    --drawer-z: 987654321;
+    --app-content-z: 123;
+}
+
+
 /* scroll bar  */
 *::-webkit-scrollbar {
     width: 12px;
+    height: 8px;
 }
 
 *::-webkit-scrollbar-track {
