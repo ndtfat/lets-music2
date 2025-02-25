@@ -1,7 +1,7 @@
 <script lang="ts">
 	let {
 		children,
-		type = 'text',
+		type = '',
 		disabled = false,
 		active = false,
 		class: className = '',
@@ -10,25 +10,40 @@
 </script>
 
 <!-- svelte-ignore slot_element_deprecated -->
-<div
-	class="wrapper flex items-center justify-center
-		{type === 'icon' ? 'rounded-full p-2' : 'rounded-md px-4 py-2'} 
-		{disabled ? 'disabled' : ''} 
-		{active ? 'active' : ''} 
-		{className}"
+<button
+	class="wrapper flex items-center justify-center {type} {disabled ? 'disabled' : ''} {active
+		? 'active'
+		: ''} {className}"
 	{...rest}
 >
 	{@render children()}
-</div>
+</button>
 
 <style lang="scss">
 	.wrapper {
 		cursor: pointer;
 		transition: all 0.3s;
 		display: inline-flex;
+		border-radius: 6px;
+		padding: 8px 16px;
+		border: 1px solid #ccc;
+
+		&.icon {
+			border-radius: 9999px;
+			border: none;
+			padding: 8px;
+		}
+		&.text {
+			border-color: transparent;
+		}
+		&.primary {
+			border-color: rgb(var(--primary));
+			background-color: rgb(var(--primary));
+			color: white;
+		}
 
 		&:hover {
-			background-color: rgba(0, 0, 0, 0.3);
+			opacity: 0.8;
 		}
 
 		&.disabled {

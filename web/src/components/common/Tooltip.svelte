@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { onDestroy, tick } from 'svelte';
+	import { onDestroy, type Snippet } from 'svelte';
 
-	export let text: string;
+	export let text: Snippet;
 	export let position: 'top' | 'bottom' | 'left' | 'right' = 'top';
 	export let delay: number = 1000;
 

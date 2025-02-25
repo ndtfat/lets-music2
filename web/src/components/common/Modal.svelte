@@ -98,7 +98,7 @@
 	}
 
 	.content {
-		max-height: calc(80vh - 64px);
+		max-height: var(--modal-max-h);
 		overflow: auto;
 	}
 </style>
