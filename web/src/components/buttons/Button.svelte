@@ -1,11 +1,20 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+
 	let {
 		children,
-		type = '',
+		type,
 		disabled = false,
 		active = false,
-		class: className = '',
-		...rest
+		onclick,
+		class: className = ''
+	}: {
+		children: Snippet;
+		type?: 'icon' | 'text' | 'primary';
+		disabled?: boolean;
+		active?: boolean;
+		class?: string;
+		onclick?: () => void;
 	} = $props();
 </script>
 
@@ -14,7 +23,7 @@
 	class="wrapper flex items-center justify-center {type} {disabled ? 'disabled' : ''} {active
 		? 'active'
 		: ''} {className}"
-	{...rest}
+	{onclick}
 >
 	{@render children()}
 </button>
@@ -42,18 +51,17 @@
 			color: white;
 		}
 
-		&:hover {
-			opacity: 0.8;
-		}
-
 		&.disabled {
 			cursor: not-allowed;
 			pointer-events: none;
 			opacity: 0.5;
 		}
-
+		&:hover {
+			border-color: rgb(var(--primary));
+		}
 		&.active {
-			color: rgb(var(--primary));
+			background: rgb(var(--primary));
+			color: black;
 		}
 	}
 </style>

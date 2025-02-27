@@ -6,7 +6,7 @@
 
 	const {
 		icon,
-		tooltip = '',
+		tooltip,
 		wave = false,
 		active = false,
 		waveEffect = false,

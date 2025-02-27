@@ -19,6 +19,6 @@
 		justify-content: center;
 		background: rgba(0, 0, 0, 0.6);
 		backdrop-filter: blur(5px);
-		animation: overlayAppear ease-in 0.2s forwards;
+		animation: overlayAppear ease-in-out 0.1s forwards;
 	}
 </style>

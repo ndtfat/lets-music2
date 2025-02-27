@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Form from '../common/form/Form.svelte';
-	import Input from '../common/form/Input.svelte';
+	import Form from '../form/Form.svelte';
+	import Input from '../form/Input.svelte';
 	import Modal from '../common/Modal.svelte';
 
 	const { onclose } = $props<{ onclose: () => void }>();
