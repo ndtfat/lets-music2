@@ -1,6 +1,7 @@
 <script lang="ts">
 	import AudioControl from '$/components/AudioControl.svelte';
 	import BackgroundDrawer from '$/components/drawers/BackgroundDrawer.svelte';
+	import SettingModal from '$/components/modals/SettingModal.svelte';
 </script>
 
 <div class="flex size-full flex-col-reverse">
@@ -11,3 +12,4 @@
 
 <!-- <ShortcutKeysModal /> -->
 <BackgroundDrawer />
+<SettingModal onclose={() => console.log('hehe')} />

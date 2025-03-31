@@ -22,7 +22,7 @@
 <span class="wrapper {isClosed ? 'closed' : ''}">
 	<Overlay>
 		<div class="modal" style="--width: {width}">
-			<div class="header flex items-center justify-between">
+			<div class="header flex items-center justify-between bg-neutral-100">
 				<h1 class="title">{title}</h1>
 				<button
 					class="close-btn flex size-[30px] cursor-pointer items-center justify-center rounded-full"
@@ -68,8 +68,8 @@
 	.modal {
 		width: var(--width);
 		background: white;
-		padding: 12px 20px;
 		border-radius: 8px;
+		overflow: hidden;
 		animation:
 			appear ease-in 0.2s,
 			scale ease-in 0.2s;
@@ -82,6 +82,7 @@
 	}
 
 	.header {
+		padding: 12px 20px;
 		margin-bottom: 12px;
 		border-bottom: 1px dashed #0000001f;
 
@@ -98,7 +99,8 @@
 	}
 
 	.content {
-		max-height: var(--modal-max-h);
+		padding: 0 20px 12px;
+		max-height: var(--modal-max-h) + 12px;
 		overflow: auto;
 	}
 </style>
