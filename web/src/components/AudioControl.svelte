@@ -41,7 +41,7 @@
 				height: 24,
 				backend: 'MediaElement',
 				cursorColor: 'transparent',
-				autoplay: true
+				autoplay: false
 			});
 
 			audioTrack.on('ready', () => (loading = false));

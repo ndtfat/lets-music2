@@ -1,8 +1,10 @@
 <script>
 	export let zIndex = 987654321;
+
+	let { onclick }: { onclick?: () => void } = $props();
 </script>
 
-<div class="overlay" style="z-index: {zIndex};">
+<div class="overlay" style="z-index: {zIndex};" {onclick}>
 	<slot />
 </div>
 

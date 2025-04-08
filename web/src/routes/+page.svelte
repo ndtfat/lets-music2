@@ -1,6 +1,7 @@
 <script lang="ts">
 	import AudioControl from '$/components/AudioControl.svelte';
 	import BackgroundDrawer from '$/components/drawers/BackgroundDrawer.svelte';
+	import AuthModal from '$/components/modals/auth/AuthModal.svelte';
 	import SettingModal from '$/components/modals/SettingModal.svelte';
 </script>
 
@@ -13,3 +14,4 @@
 <!-- <ShortcutKeysModal /> -->
 <BackgroundDrawer />
 <SettingModal onclose={() => console.log('hehe')} />
+<AuthModal />

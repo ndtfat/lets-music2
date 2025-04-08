@@ -1,36 +1,36 @@
 @import 'tailwindcss';
 
 :root {
-    --modal-z: 987654321;
-    --drawer-z: 987654321;
-    --app-content-z: 123;
-    --modal-max-h: calc(80vh - 64px);
+	--modal-z: 987654321;
+	--drawer-z: 987654321;
+	--app-content-z: 123;
+	--modal-max-h: calc(80vh - 64px);
 }
 
 html {
-    color: #333;
+	color: #333;
 }
 
 /* scroll bar  */
 *::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+	width: 6px;
+	height: 6px;
 }
 
 *::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.03);
-    border-radius: 12px;
+	background: rgba(0, 0, 0, 0.03);
+	border-radius: 12px;
 }
 
 *::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    background-clip: content-box;
-    transition: .2s;
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	background-clip: content-box;
+	transition: 0.2s;
 }
 
 .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

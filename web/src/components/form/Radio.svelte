@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { FormItem } from '$/types/form';
+	import { startCase } from '$/ultils/string';
 
 	const {
 		label = 'Label',
@@ -21,7 +22,7 @@
 		{#each options as op}
 			<label class="radio">
 				<input type="radio" {name} {...rules} value={op.value} checked={op.value === value} />
-				<span class="name">{op.label || op.value}</span>
+				<span class="name">{op.label || startCase(op.value)}</span>
 			</label>
 		{/each}
 	</div>

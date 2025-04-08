@@ -7,30 +7,56 @@
 	let {
 		children,
 		width = '60vw',
-		title = 'Title',
+		title,
+		hideClose = false,
+		hideHeader = false,
 		onclose
-	} = $props<{ children: Snippet; width?: string; title?: string; onclose: () => void }>();
+	}: {
+		children: Snippet;
+		width?: string;
+		title?: string;
+		hideClose?: boolean;
+		hideHeader?: boolean;
+		onclose?: () => void;
+	} = $props();
 
 	let isClosed = $state(false);
 
 	const onCloseModal = () => {
 		isClosed = true;
-		setTimeout(onclose, 200);
+		if (onclose) setTimeout(onclose, 200);
+	};
+
+	const stopPropagation = (event: Event) => {
+		event.stopPropagation();
 	};
 </script>
 
-<span class="wrapper {isClosed ? 'closed' : ''}">
+<span class="wrapper {isClosed ? 'closed' : ''}" onclick={onCloseModal}>
 	<Overlay>
-		<div class="modal" style="--width: {width}">
-			<div class="header flex items-center justify-between bg-neutral-100">
-				<h1 class="title">{title}</h1>
-				<button
-					class="close-btn flex size-[30px] cursor-pointer items-center justify-center rounded-full"
-					onclick={onCloseModal}
-				>
-					<Icon src={AiOutlineClose} size="26" />
-				</button>
-			</div>
+		<div
+			class="modal {hideHeader ? 'no-header' : ''}"
+			style="--width: {width}"
+			onclick={stopPropagation}
+		>
+			{#if !hideHeader}
+				<div class="header flex items-center justify-between bg-neutral-100">
+					{#if title}
+						<h1 class="title">{title}</h1>
+					{:else}
+						<span></span>
+					{/if}
+
+					{#if !hideClose}
+						<button
+							class="close-btn flex size-[30px] cursor-pointer items-center justify-center rounded-full"
+							onclick={onCloseModal}
+						>
+							<Icon src={AiOutlineClose} size="26" />
+						</button>
+					{/if}
+				</div>
+			{/if}
 			<div class="content">
 				{@render children()}
 			</div>
@@ -62,6 +88,10 @@
 		&.closed {
 			opacity: 0;
 			transform: scale(0.8);
+		}
+
+		&.no-header {
+			padding-top: 12px;
 		}
 	}
 

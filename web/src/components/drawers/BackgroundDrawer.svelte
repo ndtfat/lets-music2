@@ -5,7 +5,7 @@
 	import Button from '../buttons/Button.svelte';
 	import Drawer from '../common/Drawer.svelte';
 	import AddBackgroundModal from '../modals/AddBackgroundModal.svelte';
-	let open = $state(true);
+	let open = $state(false);
 	let openAddBg = $state(false);
 
 	const backgrounds = ['/default-bg.mp4'];
