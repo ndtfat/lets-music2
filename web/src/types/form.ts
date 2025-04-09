@@ -1,15 +1,13 @@
-export type FormItemType = "input" | "radio" | "textarea";
-
 export type BaseFormItem = {
     name: string;
-    label: string;
+    label?: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     rules?: any;
     style?: string;
 };
 
 export type InputOrTextareaFormItem = BaseFormItem & {
-    type: "input" | "textarea";
+    type: "text" | "textarea" | "email" | "number" | "password";
 };
 
 export type RadioFormItem = BaseFormItem & {

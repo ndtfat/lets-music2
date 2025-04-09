@@ -1,11 +1,19 @@
-<script>
-	export let zIndex = 987654321;
+<script lang="ts">
+	let { zIndex = 987654321, onclick }: { zIndex?: number; onclick?: () => void } = $props();
 
-	let { onclick }: { onclick?: () => void } = $props();
+	const stopPropagation = (event: Event) => {
+		event.stopPropagation();
+	};
 </script>
 
-<div class="overlay" style="z-index: {zIndex};" {onclick}>
-	<slot />
+<!-- svelte-ignore a11y_interactive_supports_focus -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<div role="button" class="overlay" style="z-index: {zIndex};" {onclick}>
+	<!-- svelte-ignore slot_element_deprecated -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<div onclick={stopPropagation}>
+		<slot />
+	</div>
 </div>
 
 <style>

@@ -35,7 +35,7 @@
 		display: inline-flex;
 		border-radius: 6px;
 		padding: 8px 16px;
-		border: 1px solid #ccc;
+		border: 1px solid transparent;
 
 		&.icon {
 			border-radius: 9999px;
@@ -56,10 +56,10 @@
 			pointer-events: none;
 			opacity: 0.5;
 		}
-		&:hover {
+		&.primary:hover {
 			border-color: rgb(var(--primary));
 		}
-		&.active {
+		&.primary.active {
 			background: rgb(var(--primary));
 			color: black;
 		}

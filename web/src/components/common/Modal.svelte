@@ -10,6 +10,7 @@
 		title,
 		hideClose = false,
 		hideHeader = false,
+		backgroundColor,
 		onclose
 	}: {
 		children: Snippet;
@@ -17,6 +18,7 @@
 		title?: string;
 		hideClose?: boolean;
 		hideHeader?: boolean;
+		backgroundColor?: string;
 		onclose?: () => void;
 	} = $props();
 
@@ -26,18 +28,15 @@
 		isClosed = true;
 		if (onclose) setTimeout(onclose, 200);
 	};
-
-	const stopPropagation = (event: Event) => {
-		event.stopPropagation();
-	};
 </script>
 
-<span class="wrapper {isClosed ? 'closed' : ''}" onclick={onCloseModal}>
-	<Overlay>
+<span class="wrapper {isClosed ? 'closed' : ''}">
+	<Overlay onclick={onCloseModal}>
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div
 			class="modal {hideHeader ? 'no-header' : ''}"
-			style="--width: {width}"
-			onclick={stopPropagation}
+			style="--width: {width}; background: {backgroundColor}"
 		>
 			{#if !hideHeader}
 				<div class="header flex items-center justify-between bg-neutral-100">
@@ -89,20 +88,20 @@
 			opacity: 0;
 			transform: scale(0.8);
 		}
-
-		&.no-header {
-			padding-top: 12px;
-		}
 	}
 
 	.modal {
 		width: var(--width);
 		background: white;
-		border-radius: 8px;
+		border-radius: 12px;
 		overflow: hidden;
 		animation:
 			appear ease-in 0.2s,
 			scale ease-in 0.2s;
+
+		// &.no-header {
+		// 	padding-top: 12px;
+		// }
 	}
 
 	.wrapper.closed .modal {
@@ -112,7 +111,7 @@
 	}
 
 	.header {
-		padding: 12px 20px;
+		padding: 24px 20px 12px;
 		margin-bottom: 12px;
 		border-bottom: 1px dashed #0000001f;
 
@@ -129,7 +128,6 @@
 	}
 
 	.content {
-		padding: 0 20px 12px;
 		max-height: var(--modal-max-h) + 12px;
 		overflow: auto;
 	}

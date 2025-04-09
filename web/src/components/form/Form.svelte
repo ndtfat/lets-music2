@@ -5,17 +5,32 @@
 	import Input from './Input.svelte';
 	import Radio from './Radio.svelte';
 
-	const {
+	let {
+		setRef,
 		fields,
 		cols = 2,
 		onchange,
+		hideLabel = false,
+		hideFooter = false,
+		onSubmit,
 		initialValues = {} // Mặc định là object rỗng nếu không có giá trị khởi tạo
 	}: {
+		setRef?: (ref: HTMLFormElement) => void;
 		cols?: number;
 		fields: FormItem[];
+		hideFooter?: boolean;
+		hideLabel?: boolean;
 		onchange?: FormEventHandler<HTMLFormElement>;
 		initialValues?: Record<string, any>;
+		onSubmit?: (values: any) => void;
 	} = $props();
+
+	let formRef: HTMLFormElement;
+	$effect(() => {
+		if (setRef && formRef) {
+			setRef(formRef);
+		}
+	});
 
 	function handleSubmit(event: Event) {
 		event.preventDefault();
@@ -35,25 +50,30 @@
 			return;
 		}
 
+		if (onSubmit) {
+			onSubmit(data);
+		}
 		console.log('Form Data:', data);
 	}
 </script>
 
-<form onsubmit={handleSubmit} {onchange}>
+<form onsubmit={handleSubmit} {onchange} bind:this={formRef}>
 	<!-- svelte-ignore slot_element_deprecated -->
 	<div class="grid" style={`grid-template-columns: repeat(${cols}, 1fr); gap: 16px;`}>
 		{#each fields as field}
-			{#if field.type == 'input'}
-				<Input {...field} value={initialValues[field.name]} />
+			{#if ['text', 'email', 'password'].includes(field.type)}
+				<Input {...field} value={initialValues[field.name]} {hideLabel} />
 			{:else if field.type == 'radio'}
 				<Radio {...field} value={initialValues[field.name]} />
 			{/if}
 		{/each}
 		<slot />
 	</div>
-	<div class="mt-3 flex justify-end">
-		<Button type="primary">Submit</Button>
-	</div>
+	{#if !hideFooter}
+		<div class="mt-8 flex justify-end">
+			<Button class="bg-neutral-700 text-white">Submit</Button>
+		</div>
+	{/if}
 </form>
 
 <style>

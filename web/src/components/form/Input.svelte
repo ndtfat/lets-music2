@@ -1,20 +1,33 @@
 <script lang="ts">
 	import type { FormItem } from '$/types/form';
+	import { startCase } from '$/ultils/string';
 
 	const {
-		label = 'Label',
+		label,
 		rules = {},
 		name,
 		value,
-		style
-	}: FormItem & { value?: string } = $props();
+		type = 'text',
+		style,
+		hideLabel = false
+	}: FormItem & { value?: string; hideLabel?: boolean } = $props();
 </script>
 
 <div {style}>
-	<label for={name} class="label text-neutral-700">
-		{label} <i class="text-sm text-red-400">({rules?.required ? 'required' : ''})</i>
-	</label>
-	<input id={name} {name} {...rules} {value} placeholder="Enter {label}" />
+	{#if !hideLabel}
+		<label for={name} class="label text-neutral-700">
+			{label ?? startCase(name)}
+			<i class="text-sm text-red-400">({rules?.required ? 'required' : ''})</i>
+		</label>
+	{/if}
+	<input
+		id={name}
+		{name}
+		{...rules}
+		{value}
+		placeholder="Enter {label ?? startCase(name)}"
+		{type}
+	/>
 </div>
 
 <style>

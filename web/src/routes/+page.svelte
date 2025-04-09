@@ -13,5 +13,5 @@
 
 <!-- <ShortcutKeysModal /> -->
 <BackgroundDrawer />
-<SettingModal onclose={() => console.log('hehe')} />
-<AuthModal />
+<!-- <SettingModal onclose={() => console.log('hehe')} /> -->
+<AuthModal type="logIn" onclose={() => {}} />
