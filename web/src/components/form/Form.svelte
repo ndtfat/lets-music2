@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from '$/components/buttons/Button.svelte';
-	import type { FormItem } from '$/types/form';
+	import type { FormItem } from '$/types/form.type';
 	import type { FormEventHandler } from 'svelte/elements';
 	import Input from './Input.svelte';
 	import Radio from './Radio.svelte';

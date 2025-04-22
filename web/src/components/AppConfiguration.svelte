@@ -1,5 +1,5 @@
 <script>
-	import { userConfiguration } from '$/store/userConfiguration.svelte';
+	import { userConfiguration } from '$/store/userConfiguration.store';
 	let { children } = $props();
 </script>
 

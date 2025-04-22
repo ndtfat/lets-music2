@@ -3,7 +3,7 @@
 	import Modal from '../common/Modal.svelte';
 	import Resizable from '../common/Resizable.svelte';
 	import { Icon } from 'svelte-icons-pack';
-	import { startCase } from '$/ultils/string';
+	import { startCase } from '$/utils/string.utils';
 	type Props = {
 		onclose: () => void;
 	};

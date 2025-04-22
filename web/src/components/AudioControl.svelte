@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { userConfiguration } from '$/store/userConfiguration.svelte';
+	import { userConfiguration } from '$/store/userConfiguration.store';
 	import {
 		RiMediaPauseFill,
 		RiMediaPlayFill,
@@ -13,7 +13,7 @@
 	import WaveSurfer from 'wavesurfer.js';
 	import IconButton from './buttons/IconButton.svelte';
 	import { onMount } from 'svelte';
-	import { formatTime } from '../ultils/time';
+	import { formatTime } from '../utils/time.utils';
 	import VolumnButton from './buttons/VolumnButton.svelte';
 	import type { KeyboardEventHandler } from 'svelte/elements';
 

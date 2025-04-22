@@ -1,9 +1,10 @@
 <script lang="ts">
+	// import { signIn, signUp } from '$/api/auth/auth.service';
 	import Form from '$/components/form/Form.svelte';
-	import type { FormItem } from '$/types/form';
+	import type { FormItem } from '$/types/form.type';
 	import Modal from '../../common/Modal.svelte';
 
-	const { type = 'logIn', onclose }: { type: 'logIn' | 'signUp'; onclose: () => void } = $props();
+	const { type = 'signUp', onclose }: { type: 'logIn' | 'signUp'; onclose: () => void } = $props();
 
 	const contentMap: Record<
 		'logIn' | 'signUp',
@@ -16,8 +17,7 @@
 	> = {
 		logIn: {
 			title: 'Log in',
-			subTitle:
-				"Welcome back to Let's Music! Ready to groove with us again and dive back into your musical journey?",
+			subTitle: "Welcome back! ✨ Let's make music together",
 			fields: [
 				{ name: 'email', rules: { required: true }, type: 'email' },
 				{ name: 'password', rules: { required: true }, type: 'password' }
@@ -32,11 +32,13 @@
 				{ name: 'password', rules: { required: true }, type: 'password' },
 				{ name: 'confirmPassword', rules: { required: true }, type: 'password' }
 			],
-			color: '#3b23ad'
+			color: '#da6b44'
 		}
 	};
 
-	let metadata = $state(contentMap[type]);
+	let screen = $state(type);
+	// svelte-ignore state_referenced_locally
+	let metadata = $derived(contentMap[screen]);
 
 	let formRef: HTMLFormElement | undefined;
 
@@ -44,20 +46,33 @@
 		if (formRef) formRef.requestSubmit();
 	};
 
-	const onSubmit = (data: { email: string; password: string }) => {
+	const toggleScreen = () => {
+		screen = screen === 'logIn' ? 'signUp' : 'logIn';
+	};
+
+	const onSubmit = async (data: { email: string; password: string }) => {
 		console.log({ data });
+		if (type === 'signUp') {
+			// const response = await signUp(data.email, data.password);
+			// console.log({ response });
+		} else {
+			// const response = await signIn(data.email, data.password);
+			// console.log({ response });
+		}
 	};
 </script>
 
 <Modal hideHeader width="400px" {onclose}>
-	<div class="p-5 text-amber-50" style="background-color: {metadata.color};">
-		<div class="text-[80px] font-bold leading-none tracking-wider">{metadata.title}</div>
-	</div>
-
-	<div class="px-5 pb-6 pt-3">
+	<div class="px-5 py-6">
+		<div
+			class="mb-4 text-[80px] font-bold leading-none tracking-wider"
+			style="color: {metadata.color}"
+		>
+			{metadata.title}
+		</div>
 		<span class="text-sm text-neutral-500">{metadata.subTitle}</span>
 
-		<div class="py-6">
+		<div class="mb-3 mt-6">
 			<Form
 				setRef={(ref) => (formRef = ref)}
 				cols={1}
@@ -68,14 +83,26 @@
 			/>
 		</div>
 
-		<div class="flex justify-end">
+		<div class="flex flex-col items-end">
+			{#if screen === 'logIn'}
+				<div class="group relative mb-5">
+					<button class="cursor-pointer text-[14px] italic" onclick={toggleScreen}>
+						Forgot password
+					</button>
+					<div
+						class="absolute bottom-0 h-1 w-[0px] transition-all group-hover:w-full"
+						style="background: {contentMap[screen === 'logIn' ? 'signUp' : 'logIn'].color}"
+					></div>
+				</div>
+			{/if}
+
 			<div class="relative">
 				<button
 					class="cursor-pointer text-[24px] font-semibold tracking-wider"
 					onclick={onClickSubmit}
 				>
 					<!-- {metadata.title} -->
-					{type === 'logIn' ? 'Groove In' : 'Drop In'}
+					{screen === 'logIn' ? 'Groove In' : 'Drop In'}
 				</button>
 				<div class="absolute bottom-0 h-1 w-full" style="background: {metadata.color}"></div>
 			</div>

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { FormItem } from '$/types/form';
-	import { startCase } from '$/ultils/string';
+	import type { FormItem } from '$/types/form.type';
+	import { startCase } from '$/utils/string.utils';
 
 	const {
 		label = 'Label',

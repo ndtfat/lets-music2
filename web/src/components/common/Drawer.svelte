@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Position } from '$/types/common';
+	import type { Position } from '$/types/common.type';
 	import type { Snippet } from 'svelte';
 	import { Icon } from 'svelte-icons-pack';
 	import { RiArrowsArrowUpWideFill, RiArrowsArrowDownWideFill } from 'svelte-icons-pack/ri';
