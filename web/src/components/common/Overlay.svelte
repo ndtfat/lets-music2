@@ -27,8 +27,14 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: rgba(0, 0, 0, 0.6);
+		/* background: rgba(0, 0, 0, 0.2);
+		backdrop-filter: blur(5px); */
+		/* From https://css.glass */
+		background: rgba(0, 0, 0, 0.2);
+		border-radius: 16px;
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 		backdrop-filter: blur(5px);
+		-webkit-backdrop-filter: blur(5px);
 		animation: overlayAppear ease-in-out 0.1s forwards;
 	}
 </style>

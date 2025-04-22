@@ -27,7 +27,7 @@
 
 	let formRef: HTMLFormElement;
 	$effect(() => {
-		if (setRef && formRef) {
+		if (setRef && formRef) { 
 			setRef(formRef);
 		}
 	});
